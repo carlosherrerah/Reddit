@@ -1,0 +1,13 @@
+- Create the project
+- Add gitignore
+- Install express
+- Install firebase
+- While the previous packages are installing, set up insomnia
+- Show package.json to ensure understanding
+- Create folder structure
+- Go ahead and just create the controllers and index
+- Create a new get request inside user controllers and install body parser with npm install --save body-parser
+- Set up body parser on the index.js file
+- Create test data on firebase (taking all the properties in our diagram)
+- Create the firebase script, and replace imports with requires, as well as adding module exports
+- Create the Get method for all users, and make sure to mention that it is case sensitive
