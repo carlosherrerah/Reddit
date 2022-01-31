@@ -11,3 +11,12 @@
 - Create test data on firebase (taking all the properties in our diagram)
 - Create the firebase script, and replace imports with requires, as well as adding module exports
 - Create the Get method for all users, and make sure to mention that it is case sensitive
+- Create the HTTP codes "enum" in a new file
+- Install crypto-js with npm install crypto-js
+- Create new post request on insomnia
+- Mention that the password SHOULD NOT BE TRANSMITTED IN PLAIN TEXT WITHIN THE REQUEST AND THIS IS FOR DEMO PURPOSES ONLY, THE FRONTEND SHOULD HASH IT FIRST!!!!!
+- Create user.js entity
+- Create new post request, and do "not implemented" httpcode example
+- Remind them that we can use this req to write and update
+- Create delete req
+- Set no warnings on promise rejection

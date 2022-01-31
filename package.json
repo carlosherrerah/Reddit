@@ -4,8 +4,8 @@
   "description": "Un clon de reddit hecho con propósitos educativos",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "start": "node ./src/index.js"
+    "test": "node ./src/index.js",
+    "start": "node --unhandled-rejections=none ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/carlosherrerah/Reddit#readme",
   "dependencies": {
     "body-parser": "^1.19.1",
+    "crypto-js": "^4.1.1",
     "express": "^4.17.2",
     "firebase": "^9.6.5"
   }
