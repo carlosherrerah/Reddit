@@ -9,5 +9,8 @@ app.listen(PORT, () => {
 	console.log("[DEBUG] - LISTENING ON PORT " + PORT);
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+
 //Routes
 require("./controllers/UserController")(app);

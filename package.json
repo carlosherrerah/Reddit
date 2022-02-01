@@ -19,6 +19,7 @@
   "homepage": "https://github.com/carlosherrerah/Reddit#readme",
   "dependencies": {
     "body-parser": "^1.19.1",
+    "crypto-js": "^4.1.1",
     "express": "^4.17.2",
     "firebase": "^9.6.5"
   }
