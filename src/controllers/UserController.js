@@ -1,6 +1,5 @@
 //Imports
 const { User } = require("../entities/user");
-const { SHA256 } = require("crypto-js");
 const firebaseRef = require("../resources/database");
 const HTTP_CODES = require("../resources/htppCodes");
 //Constantes chidas de lógica
@@ -30,19 +29,11 @@ async function CreateUser(rawData, db) {
 			rawData.email, rawData.password,
 			rawData.posts
 		);
-		let hashedPassword = SHA256(user.password);
-
-		let toInsert = {
-			posts: user.posts,
-			profilePicture: user.profilePicture,
-			email: user.email,
-			hash: hashedPassword.toString()
-		};
 
 		let locationRef = firebaseRef.ref(db, "Users/" + user.userName);
 
 		await firebaseRef.databaseFunctions.set(
-			locationRef, toInsert
+			locationRef, user
 		);
 		return true;
 	}
@@ -50,6 +41,11 @@ async function CreateUser(rawData, db) {
 		console.log("An error has occured: " + err);
 		return false;
 	}
+}
+
+async function DeleteUser(userName, db) {
+	let locationRef = firebaseRef.ref(db, "Users/" + userName);
+	await firebaseRef.databaseFunctions.set(locationRef, null);
 }
 
 module.exports = function (app) {
@@ -70,7 +66,14 @@ module.exports = function (app) {
 		let db = firebaseRef.getDatabase();
 		let wasInserted = await CreateUser(req.body, db);
 		res.status(wasInserted === false ? HTTP_CODES.INTERNAL_SERVER_ERROR : HTTP_CODES.CREATED);
-		res.send("Read body!");
+		res.send();
+	});
+
+	app.delete(BASE_PATH + "/deleteUser", async(req, res) => {
+		let db = firebaseRef.getDatabase();
+		console.log(req.query.u);
+		await DeleteUser(req.query.u, db);
+		res.send();
 	});
 
 }

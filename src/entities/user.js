@@ -1,3 +1,4 @@
+const { SHA256 } = require("crypto-js");
 
 class User {
 	constructor(userName, profilePicture, email, password, posts = []) {
@@ -7,7 +8,7 @@ class User {
 			throw new Error("The given profile picture link is not supported!");
 		}
 		this.email = email;
-		this.password = password;
+		this.hash = SHA256(password).toString();
 		this.posts = posts;
 	}
 

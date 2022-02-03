@@ -14,3 +14,4 @@ app.use(bodyParser.json())
 
 //Routes
 require("./controllers/UserController")(app);
+require("./controllers/PostController")(app);
