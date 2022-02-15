@@ -32,7 +32,7 @@ async function CreateUser(rawData, db) {
 
 		let locationRef = firebaseRef.ref(db, "Users/" + user.userName);
 
-		await firebaseRef.databaseFunctions.set(
+		await firebaseRef.databaseFunctions.push(
 			locationRef, user
 		);
 		return true;
