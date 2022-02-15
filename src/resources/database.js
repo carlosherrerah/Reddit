@@ -7,13 +7,13 @@ const getDatabase = databaseFunctions.getDatabase;
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC2Ns1EusYySeC1IVmgc5HYirVLaOYaXLU",
-  authDomain: "isei-68b08.firebaseapp.com",
-  databaseURL: "https://isei-68b08-default-rtdb.firebaseio.com",
-  projectId: "isei-68b08",
-  storageBucket: "isei-68b08.appspot.com",
-  messagingSenderId: "51420752605",
-  appId: "1:51420752605:web:eb9d4a1865a9edd9fec934"
+  apiKey: "AIzaSyAp1SpocaZKrfaTc8acx19l2j_FTWu0HK0",
+  authDomain: "isei07a-up190227.firebaseapp.com",
+  databaseURL: "https://isei07a-up190227-default-rtdb.firebaseio.com",
+  projectId: "isei07a-up190227",
+  storageBucket: "isei07a-up190227.appspot.com",
+  messagingSenderId: "735499267875",
+  appId: "1:735499267875:web:98b188f4a33bb66ea02696"
 };
 
 
