@@ -55,7 +55,13 @@ async function CreatePost(rawPostData, db) {
 		postLocationRef, post
 	);
 
-	await SyncPostUser(post.author, post, key, db);
+	//await SyncPostUser(post.author, post, key, db);
+}
+
+async function getPost(rawData, db){
+	
+
+
 }
 
 module.exports = function (app) {
@@ -68,6 +74,14 @@ module.exports = function (app) {
 		let db = firebaseRef.getDatabase();
 		console.log(req.body);
 		await CreatePost(req.body, db);
+		res.send(HTTP_CODES.CREATED);
+	});
+
+	
+	app.post(BASE_PATH + "/getPost", async (req, res) => {
+		let db = firebaseRef.getDatabase();
+		console.log(req.body);
+		await getPost(req.body, db);
 		res.send(HTTP_CODES.CREATED);
 	});
 }
