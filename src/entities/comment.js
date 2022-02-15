@@ -1,7 +1,8 @@
 class Comment {
 	//fecha, usuario, texto, título, comentarios, likes, dislikes, tag?
-	constructor(author, content, likes = 0, dislikes = 0) {
+	constructor(author, post, content, likes = 0, dislikes = 0) {
 		this.author = author;
+		this.post = post;
 		this.content = content;
 		this.likes = likes;
 		this.dislikes = dislikes;
