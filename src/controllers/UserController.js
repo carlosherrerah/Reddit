@@ -29,10 +29,18 @@ async function CreateUser(rawData, db) {
 			rawData.email, rawData.password,
 			rawData.posts
 		);
+		
+		let userList = await GetUsersFromDB(db);
+		// let flag = false;
+		console.log(userList);
+		// for (let i = 0; i < userList.length; i++) {
+		// 	if(userList)
+			
+		// }
 
-		let locationRef = firebaseRef.ref(db, "Users/" + user.userName);
+		let locationRef = firebaseRef.ref(db, "Users/");
 
-		await firebaseRef.databaseFunctions.set(
+		await firebaseRef.databaseFunctions.push(
 			locationRef, user
 		);
 		return true;
