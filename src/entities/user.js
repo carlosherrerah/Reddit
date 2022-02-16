@@ -2,7 +2,7 @@ const { SHA256 } = require("crypto-js");
 
 class User {
 	constructor(userName, profilePicture, email, password, posts = []) {
-		//this.userName = userName;
+		this.userName = userName;
 		/*
 		this.profilePicture = profilePicture;
 		if (!this.ValidatePfp(profilePicture)) {
