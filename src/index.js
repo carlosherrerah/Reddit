@@ -4,10 +4,9 @@ const config = require('./config.js')
 
 
 //Routers
-const userRouter = require('./routes/user.js')
-//import userRouter from './routes/user.js';
-//import postRouter from './routes/post.js';
-//import commentRouter from './routes/comment.js';
+const userRouter = require('./routes/user.js');
+const postRouter = require('./routes/post.js');
+const commentRouter = require('./routes/comment.js')
 
 //Server configuration 
 const app = express();
@@ -25,5 +24,5 @@ app.get('/', (req,res)=>{
 
 //Routes
 app.use(userRouter);
-//app.use(postRouter);
-//app.use(commentRouter);
+app.use(postRouter);
+app.use(commentRouter);

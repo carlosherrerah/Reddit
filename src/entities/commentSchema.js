@@ -1,4 +1,4 @@
-class Comment {
+class commentSchema {
     constructor(post,author,content){
         this.post = post,
         this.author = author,
@@ -6,4 +6,4 @@ class Comment {
     }
 }
 
-export default Comment;
+module.exports = commentSchema;

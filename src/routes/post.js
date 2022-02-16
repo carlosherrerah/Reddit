@@ -1,13 +1,10 @@
-import { Router } from 'express';
-import config from '../config.js'
-import * as postCTRL from '../controllers/post.controller.js';
+const { Router } = require('express')
+const config = require('../config.js')
+const postRouter = Router();
+const postController = require('../controllers/post.controller.js');
 
-const router = Router();
+//Routes
+postRouter.post(config.POSTROUTE+'/createPost/:id', postController.createPost);
+postRouter.delete(config.POSTROUTE+'/deletePost/:id', postController.deletePost);
 
-//Determinar con el team el funcionamiento
-//router.post(config.POSTROUTE+'/createPOST/:id', postCTRL.createPost());
-//router.get(config.POSTROUTE+'/getPosts/', commentCTRL.getPosts());
-//router.delete(config.POSTROUTE+'/deletePosts/', commentCTRL.deletePost());
-
-
-export default router;
+module.exports = postRouter;

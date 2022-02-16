@@ -1,11 +1,10 @@
-import { Router } from 'express';
-import config from '../config.js'
-import * as commentCTRL from '../controllers/comment.controller.js';
+const { Router } = require('express')
+const config = require('../config.js')
+const commentRouter = Router();
+const commentController = require('../controllers/comment.controller.js');
 
-const router = Router();
+//Routes
+commentRouter.post(config.COMMENTROUTE+'/createComment/:id', commentController.createComment);
+commentRouter.delete(config.COMMENTROUTE+'/deleteComment/:id', commentController.deleteComment);
 
-//Determinar con el team el funcionamiento
-//router.post(config.COMMENTROUTE+'/createComment/:id', commentCTRL.createComment());
-//router.get(config.COMMENTROUTE+'/getComment/:id', commentCTRL.createComment());
-
-export default router;
+module.exports = commentRouter;
