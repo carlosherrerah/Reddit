@@ -8,8 +8,7 @@ const BASE_PATH = "/comments";
 async function CreateComment(rawCommentData, db) {
 	//Validation
 	let comment = new Comment(rawCommentData.author, rawCommentData.post, 
-		rawCommentData.content, rawCommentData.likes,
-		rawCommentData.dislikes
+		rawCommentData.content
 	);
 
 	let postLocationRef = firebaseRef.ref(db, "Comments");
@@ -17,8 +16,6 @@ async function CreateComment(rawCommentData, db) {
 	await firebaseRef.databaseFunctions.set(
 		postLocationRef, comment
 	);
-
-	//await SyncPostUser(post.author, post, key, db);
 }
 
 module.exports = function (app) {

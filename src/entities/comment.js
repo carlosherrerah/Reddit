@@ -1,11 +1,9 @@
 class Comment {
 	//fecha, usuario, texto, título, comentarios, likes, dislikes, tag?
-	constructor(author, post, content, likes = 0, dislikes = 0) {
+	constructor(author, post, content) {
 		this.author = author;
 		this.post = post;
 		this.content = content;
-		this.likes = likes;
-		this.dislikes = dislikes;
 		this.date = new Date().toLocaleString();
 	}
 }
