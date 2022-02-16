@@ -7,7 +7,23 @@ commentController = {};
 
 //Create a comment (determinar)
 commentController.createComment = async (req,res)=>{
-    console.log('create comment');
+    var userId = req.params.user_id;
+    var postId = req.params.post_id;
+
+    var newComment = new commentSchema(
+        postId,
+        userId,
+        req.body.content
+    );
+
+    //DB operations
+    var collection = firebaseRef.ref(db, "Comments");                                       //Create and select the collection
+    const insertedComment = await firebaseRef.databaseFunctions.push(collection, newComment);  //Insert the information in the collection       
+    res.json(insertedComment.key); 
+
+    //Ingresar el key
+    collection = firebaseRef.ref(db,"Posts/"+postId+"/comments/"+insertedComment.key);
+    const commentPostRef = await firebaseRef.databaseFunctions.set(collection, "");  //Insert the information in the collection       
 }
 
 //Delete a comment (if of the comment requested by params)
