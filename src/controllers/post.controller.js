@@ -8,9 +8,10 @@ postController = {};
 
 //Create a post (id of the author requested by params)
 postController.createPost = async (req,res)=>{
-    var userId = req.params.id;
+    var userId = req.params.id;//Get the id from the link
+    //Creation of the new post according to its schema
     var newPost = new postSchema(
-        req.body.title,
+        req.body.title,//Get from the request's json body
         userId,
         req.body.content
     );

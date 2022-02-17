@@ -7,13 +7,14 @@ commentController = {};
 
 //Create a comment (determinar)
 commentController.createComment = async (req,res)=>{
+    //Obtained from the request link
     var userId = req.params.user_id;
     var postId = req.params.post_id;
-
+    //Creation of the new comment according to its schema
     var newComment = new commentSchema(
         postId,
         userId,
-        req.body.content
+        req.body.content//Obtained from the request's json
     );
 
     //DB operations

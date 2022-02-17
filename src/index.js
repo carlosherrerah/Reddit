@@ -22,7 +22,7 @@ app.get('/', (req,res)=>{
     res.send("Default route, access to users/, posts/ or comments/ routes for functions.");
 });
 
-//Routes
+//Routes being used
 app.use(userRouter);
 app.use(postRouter);
 app.use(commentRouter);

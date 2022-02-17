@@ -8,7 +8,7 @@ userController = {};
 //Create a user 
 userController.createUser = async (req,res)=>{
     //Creation of the new user according to its schema
-    var newUser = new userSchema(
+    var newUser = new userSchema(//All information is obtained from the request's json body
         req.body.username, 
         req.body.email, 
         req.body.password
