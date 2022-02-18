@@ -1,6 +1,5 @@
 const firebaseRef = require('../firebase.js');
 const postSchema = require('../entities/postSchema');
-const { isGeneratorObject } = require('util/types');
 //Get the database from Firebase
 const db = firebaseRef.getDatabase();
 
