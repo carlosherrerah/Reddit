@@ -1,6 +1,6 @@
 module.exports = {
     PORT: 3000,
     USERROUTE: '/users',
-    POSTROUTE: '/post',
+    POSTROUTE: '/posts',
     COMMENTROUTE: '/comments'
 }

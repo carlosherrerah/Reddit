@@ -26,4 +26,5 @@ userController.deleteUser = async (req,res)=>{
     var collection = firebaseRef.ref(db, "Users");
 }
 
+
 module.exports = userController;

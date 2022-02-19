@@ -13,14 +13,22 @@ const getDatabase = databaseFunctions.getDatabase;
   En caso de no cambiar la configuracion, toda la info almacenada va a dar a la BD de Fernando
 */
 const firebaseConfig = {
-  apiKey: "AIzaSyC2Ns1EusYySeC1IVmgc5HYirVLaOYaXLU",
-  authDomain: "isei-68b08.firebaseapp.com",
-  databaseURL: "https://isei-68b08-default-rtdb.firebaseio.com",
-  projectId: "isei-68b08",
-  storageBucket: "isei-68b08.appspot.com",
-  messagingSenderId: "51420752605",
-  appId: "1:51420752605:web:eb9d4a1865a9edd9fec934"
-};
+
+	apiKey: "AIzaSyB7XgRTEo9vjSDp3omtvohsd2w1Ph7J520",
+  
+	authDomain: "isei-61c42.firebaseapp.com",
+  
+	databaseURL: "https://isei-61c42-default-rtdb.firebaseio.com",
+  
+	projectId: "isei-61c42",
+  
+	storageBucket: "isei-61c42.appspot.com",
+  
+	messagingSenderId: "908815792750",
+  
+	appId: "1:908815792750:web:b045352a82b3f34de2047f"
+  
+  };
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
