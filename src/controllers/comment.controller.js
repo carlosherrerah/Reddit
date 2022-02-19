@@ -1,5 +1,8 @@
 const firebaseRef = require('../firebase.js');
-const commentSchema = require('../entities/commentSchema')
+const commentSchema = require('../entities/commentSchema');
+const { Router } = require('express');
+const firebase = require('../firebase.js');
+const { get } = require('firebase/database');
 //Get the database from Firebase
 const db = firebaseRef.getDatabase();
 
@@ -29,7 +32,21 @@ commentController.createComment = async (req,res)=>{
 
 //Delete a comment (if of the comment requested by params)
 commentController.deleteComment = async (req,res)=>{
-    console.log('delete comment');
+    var id = req.params.id;
+
+    //Get post's key to which the comment is related to
+    collection = firebaseRef.ref(db, "Comments/"+id+"/post")
+    var post = await firebaseRef.databaseFunctions.get(collection);
+
+    //Remove comment from the colletion Posts
+    var collection = firebaseRef.ref(db, "Posts/"+post.val()+"/comments/"+id);
+    await firebaseRef.databaseFunctions.remove(collection);
+
+    //Remove comment from the collection Comments
+    var collection = firebaseRef.ref(db, "Comments/"+id);
+    await firebaseRef.databaseFunctions.remove(collection);
+    
 }
 
 module.exports = commentController;
+

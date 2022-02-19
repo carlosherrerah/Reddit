@@ -28,7 +28,23 @@ postController.createPost = async (req,res)=>{
 
 //Delete a post (id of the post requested by params)
 postController.deletePost = async (req,res)=>{
-    console.log('delete post');
+    var id = req.params.id;
+    var Comments = [];
+
+    //Get comment's keys from the collection Comments related to the post
+    var collection = firebaseRef.ref(db, "Posts/"+id+"/comments");
+    var Comments = await (await firebaseRef.databaseFunctions.get(collection)).toJSON();
+    Comments = Object.keys(Comments);
+
+    //Delete comments from the collection Comments relate to the post
+    for (let i = 0; i < Comments.length; i++) {
+        collection = firebaseRef.ref(db, "Comments/"+Comments[i]);
+        await firebaseRef.databaseFunctions.remove(collection);
+    }
+
+    //Delete the post
+    collection = firebaseRef.ref(db, "Posts/"+id);
+    await firebaseRef.databaseFunctions.remove(collection);
 }
 
 module.exports = postController;
