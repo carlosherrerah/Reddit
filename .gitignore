@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 node_modules/
 resources/database.js
 src/resources/database.js
+=======
+node_modules
+>>>>>>> origin/fArevalo
