@@ -73,6 +73,7 @@ const editPost: RequestHandler = async (req,res) =>{
 const deletePost: RequestHandler = async (req,res) =>{
     try {
         const deletedPost = await postModel.findByIdAndDelete(req.params.postId);
+        const deletedComments = await commentModel.deleteMany({post : deletedPost._id});
         const deletedPostUser = await userModel.findByIdAndUpdate(deletedPost.author,
             {
                 $pull:{
@@ -80,8 +81,7 @@ const deletePost: RequestHandler = async (req,res) =>{
                 }
             }
         );
-        const deletedComments = await commentModel.deleteMany({post : deletedPost._id});
-        res.json(deletedPostUser);
+        res.json(deletedPost);
     } catch (error) {
         res.json(error);
     }

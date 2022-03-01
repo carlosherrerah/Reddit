@@ -1,8 +1,7 @@
 import {RequestHandler} from 'express';
 import userModel from '../schemas/userSchema';
 import postModel from '../schemas/postSchema';
-import  mongoose  from 'mongoose';
-//import commentModel from '../schemas/commentSchema';
+import commentModel from '../schemas/commentSchema';
 
 //Functions for "Users"
 const createUser: RequestHandler = async (req,res) =>{
@@ -43,7 +42,7 @@ const deleteUser: RequestHandler = async (req,res) =>{
     try {
         const deletedUser = await userModel.findByIdAndDelete(req.params.userId);
         const deletedPosts = await postModel.deleteMany({author : deletedUser._id});
-        const deletedComments = await postModel.deleteMany({author : deletedUser._id})
+        const deletedComments = await commentModel.deleteMany({author : deletedUser._id})
         if (deletedUser && deletedPosts && deletedComments)
             res.json({message: "All the information of the user was deleted"});
     } catch (error) {
