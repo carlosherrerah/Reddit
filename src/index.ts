@@ -23,4 +23,4 @@ app.use(cors());
 //Routes
 app.use(userRoutes);
 app.use(postRoutes);
-//app.use(commentRoutes);
+app.use(commentRoutes);

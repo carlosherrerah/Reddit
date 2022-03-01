@@ -17,12 +17,10 @@ const postSchema = new Schema({
         required: true,
         trim: true
     },
-    comments:{
-        type: mongoose.Types.ObjectId
-    },
-    likes:{
+    comments:[{
         type: mongoose.Types.ObjectId,
-    }
+        ref: "comment"
+    }],
 },{
     versionKey:false,
     timestamps: true

@@ -1,4 +1,5 @@
 import {Schema, model} from 'mongoose';
+import mongoose from 'mongoose'
 //Structure (schema) of Users in MongoDB
 
 const userSchema = new Schema({
@@ -18,7 +19,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
         trim: true
-    }
+    },
+    posts:[{
+        type: mongoose.Types.ObjectId,
+        ref: 'post'
+    }]
 },{
     versionKey:false,
 });

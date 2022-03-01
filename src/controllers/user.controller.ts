@@ -1,8 +1,10 @@
 import {RequestHandler} from 'express';
 import userModel from '../schemas/userSchema';
+import postModel from '../schemas/postSchema';
+import  mongoose  from 'mongoose';
+//import commentModel from '../schemas/commentSchema';
 
 //Functions for "Users"
-
 const createUser: RequestHandler = async (req,res) =>{
     try {
         const userFound = await userModel.findOne({username: req.body.username});
@@ -11,8 +13,8 @@ const createUser: RequestHandler = async (req,res) =>{
             return res.status(301).json({error: "The username or email already exists"})
         else{
             const newUser = new userModel(req.body);
-            const qry = await newUser.save();
-            res.json(qry);
+            const createUser = await newUser.save();
+            res.json(createUser);
         }
     } catch (error) {
         res.json(error);
@@ -21,8 +23,8 @@ const createUser: RequestHandler = async (req,res) =>{
 
 const getUser: RequestHandler = async (req,res) =>{
     try {
-        const qry = await userModel.findById(req.params.id);
-        res.json(qry);
+        const user = await userModel.findById(req.params.userId).populate('posts');
+        res.json(user);
     } catch (error) {
         res.json(error);
     }
@@ -30,8 +32,8 @@ const getUser: RequestHandler = async (req,res) =>{
 
 const getUsers: RequestHandler = async (req,res) =>{
     try {
-        const qry = await userModel.find();
-        res.json(qry);
+        const users = await userModel.find();
+        res.json(users);
     } catch (error) {
         res.json(error);
     }
@@ -39,9 +41,11 @@ const getUsers: RequestHandler = async (req,res) =>{
 
 const deleteUser: RequestHandler = async (req,res) =>{
     try {
-        const qry = await userModel.findByIdAndDelete(req.params.id);
-        if (qry)
-            res.json({message: "User deleted"});
+        const deletedUser = await userModel.findByIdAndDelete(req.params.userId);
+        const deletedPosts = await postModel.deleteMany({author : deletedUser._id});
+        const deletedComments = await postModel.deleteMany({author : deletedUser._id})
+        if (deletedUser && deletedPosts && deletedComments)
+            res.json({message: "All the information of the user was deleted"});
     } catch (error) {
         res.json(error);
     }
